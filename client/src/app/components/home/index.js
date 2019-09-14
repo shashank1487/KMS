@@ -14,10 +14,6 @@ class Home extends Component {
     selectedTags: ""
   };
 
-  componentDidMount() {
-    this.props.fetchTagsHandler();
-  }
-
   handleSearch = (event, tag = "") => {
     let selectedTag = "";
     if (!tag) {
@@ -47,13 +43,7 @@ class Home extends Component {
             searchText={selectedTags}
             changeHandler={this.handleSearch}
           />
-          {tags && tags.length > 0 && (
-            <Tags
-              tags={tags.map(tag => tag.name)}
-              showAll={showAllTags}
-              clickHandler={this.handleSearch}
-            />
-          )}
+          <Tags showAll={showAllTags} clickHandler={this.handleSearch} />
           <div
             onClick={() => {
               this.setState({ showAllTags: true });
@@ -73,19 +63,21 @@ Home.propTypes = {
   className: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state, props) => {
-  return {
-    tags: state.tags.tags
-  };
-};
+// const mapStateToProps = (state, props) => {
+//   return {
+//     tags: state.tags.tags
+//   };
+// };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchTagsHandler: () => dispatch(tagActions.fetchTags())
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     fetchTagsHandler: () => dispatch(tagActions.fetchTags())
+//   };
+// };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HomeWrapper(Home));
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(HomeWrapper(Home));
+
+export default HomeWrapper(Home);

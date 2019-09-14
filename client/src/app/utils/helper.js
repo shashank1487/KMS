@@ -1,6 +1,6 @@
-export const sortData = tags => {
+export const sortData = (tags, sortProperty) => {
   let mappedTags = tags.map((el, i) => {
-    return { index: i, value: el.toLowerCase() };
+    return { index: i, value: el[sortProperty].toLowerCase() };
   });
 
   mappedTags.sort((a, b) => {

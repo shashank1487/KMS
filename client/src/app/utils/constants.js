@@ -33,3 +33,5 @@ export const MAIN_HEADING = "what are u looking for?";
 export const SEARCH_PLACEHOLDER_TEXT =
   "Search PoCs, KB Articles and Code snippets";
 export const SHOW_MORE_TAGS = "show more tags";
+
+export const GET_ALL_TAGS_API = "GetAllTags";

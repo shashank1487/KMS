@@ -1,9 +1,10 @@
 import types from "../actions/types";
 
-const defaultState = {
+export const initialState = {
   tags: []
 };
-export default (state = defaultState, action) => {
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case types.RECEIVED_TAGS_SUCCESS:
       return {
