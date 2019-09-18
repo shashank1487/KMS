@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, memo } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import PropTypes from "prop-types";
 
 import { sortData } from "../../utils/helper";
@@ -10,7 +10,8 @@ import TagsWrapper from "./style";
 import tagsReducer, { initialState } from "../../reducers/tags";
 import types from "../../actions/types";
 
-const Tags = ({ className, showAll, clickHandler }) => {
+const Tags = ({ className, clickHandler }) => {
+  const [showAll, setShowAll] = useState(false);
   const [state, dispatch] = useReducer(tagsReducer, initialState);
 
   useEffect(() => {
@@ -49,14 +50,22 @@ const Tags = ({ className, showAll, clickHandler }) => {
             />
           ))}
       </ul>
+      <div
+        onClick={() => {
+          setShowAll(true);
+        }}
+        className="label"
+        hidden={showAll}
+      >
+        {Constants.SHOW_MORE_TAGS}
+      </div>
     </div>
   );
 };
 
 Tags.propTypes = {
-  tags: PropTypes.array,
-  showAll: PropTypes.bool.isRequired,
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  clickHandler: PropTypes.func.isRequired
 };
 
 export default TagsWrapper(Tags);

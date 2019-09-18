@@ -19,6 +19,10 @@ const HeaderWrapper = component => {
         font-size: 1rem;
         font-weight: 500;
         text-transform: uppercase;
+
+        span{
+          margin:0 5px;
+        }
       }
       .navbar-collapse {
         ul.links {
@@ -36,6 +40,23 @@ const HeaderWrapper = component => {
         ul.settings {
           li {
             padding: 0 ${setRem(10)};
+          }
+        }
+        ul.auth {
+          width: 100%;
+          justify-content: flex-end;
+          li {
+            padding: 0 ${setRem(10)};
+            a {
+              font-size: 0.75rem;
+              font-weight: 500;
+              color: ${setColor.linkGrayColor};
+              text-transform: uppercase;
+
+              span{
+                font-size: 0.75rem;
+              }
+            }
           }
         }
       }
@@ -79,6 +100,11 @@ const HeaderWrapper = component => {
           li {
             padding: 0;
           }
+        }
+        ul.auth {
+          li {
+            padding: 0;
+          }  
         }
       }
     }

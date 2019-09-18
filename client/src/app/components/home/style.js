@@ -46,36 +46,6 @@ const HomeWrapper = component => {
           outline: none;
         }
       }
-
-      .label {
-        color: ${setColor.blackColor};
-        opacity: 0.25;
-        overflow: hidden;
-        text-align: center;
-        font-size: ${setRem(12)};
-        padding: ${setRem(5)};
-        font-weight:700;
-        text-transform: uppercase;
-        cursor: pointer;
-        &:before,
-        &:after {
-            background-color: ${setColor.blackColor};
-            content: "";
-            display: inline-block;
-            height: ${setRem(1)};
-            position: relative;
-            vertical-align: middle;
-            width: 10%;
-        }
-        &:before {
-          right: 0.5em;
-          margin-left: -50%;
-        }
-        &:after {
-          left: 0.5em;
-          margin-right: -50%;
-        }
-        }
     }
     
     ${customMedia.between("mobileXS", "mobileL")`

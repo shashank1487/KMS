@@ -1,8 +1,6 @@
 import types from "../actions/types";
 
-export const initialState = {
-  tags: []
-};
+export const initialState = [];
 
 export default (state = initialState, action) => {
   switch (action.type) {

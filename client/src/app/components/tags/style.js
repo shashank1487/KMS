@@ -12,7 +12,7 @@ const TagsWrapper = component => {
       padding: ${setRem(5)};
       width: 56%;
       margin: 10px auto;
-      max-height: ${setRem(100)};
+      max-height: ${setRem(80)};
       overflow: hidden;
 
       .tag {
@@ -25,7 +25,7 @@ const TagsWrapper = component => {
           color: setColor.borderColor
         })};
         background: ${setColor.whiteColor};
-        padding: 6px 10px;
+        padding: 2px 10px;
         margin-bottom: ${setRem(10)};
         cursor: pointer;
         &:hover {
@@ -48,6 +48,35 @@ const TagsWrapper = component => {
     }
     .tags-show-all {
       overflow: visible;
+    }
+    .label {
+      color: ${setColor.blackColor};
+      opacity: 0.25;
+      overflow: hidden;
+      text-align: center;
+      font-size: ${setRem(12)};
+      padding: ${setRem(5)};
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      &:before,
+      &:after {
+        background-color: ${setColor.blackColor};
+        content: "";
+        display: inline-block;
+        height: ${setRem(1)};
+        position: relative;
+        vertical-align: middle;
+        width: 10%;
+      }
+      &:before {
+        right: 0.5em;
+        margin-left: -50%;
+      }
+      &:after {
+        left: 0.5em;
+        margin-right: -50%;
+      }
     }
 
     ${customMedia.between("mobileXS", "mobileL")`

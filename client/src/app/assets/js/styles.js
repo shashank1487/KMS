@@ -4,11 +4,15 @@ export const setColor = {
   blackColor: "#000",
   whiteColor: "#fff",
   grayColor: "#ccc",
-  lightGray: "#fcfcfc",
+  lightGrayColor: "#fcfcfc",
   borderColor: "rgba(0,0,0, 0.2)",
   linkGrayColor: "#8f8f8f",
   blackColorWithOpacityOne: "rgba(0, 0, 0, 0.1)",
-  blackColorWithOpacityFive: "rgba(0, 0, 0, 0.5)"
+  blackColorWithOpacityFive: "rgba(0, 0, 0, 0.5)",
+  primaryColor: "#17a2b8",
+  lightBlackColor: "#333",
+  alertLightColor: "#f4f4f4",
+  dangerColor: "#dc3545"
 };
 
 export const setFont = {

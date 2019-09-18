@@ -5,12 +5,10 @@ import PropTypes from "prop-types";
 import Search from "../common/search";
 import Tags from "../tags";
 import HomeWrapper from "./style";
-import * as tagActions from "../../actions/tags";
 import * as Constants from "../../utils/constants";
 
 class Home extends Component {
   state = {
-    showAllTags: false,
     selectedTags: ""
   };
 
@@ -32,8 +30,8 @@ class Home extends Component {
   };
 
   render = () => {
-    const { className, tags } = this.props;
-    const { showAllTags, selectedTags } = this.state;
+    const { className } = this.props;
+    const { selectedTags } = this.state;
     return (
       <div className={`${className} container`}>
         <div className="col-md-12 main-title">
@@ -43,16 +41,7 @@ class Home extends Component {
             searchText={selectedTags}
             changeHandler={this.handleSearch}
           />
-          <Tags showAll={showAllTags} clickHandler={this.handleSearch} />
-          <div
-            onClick={() => {
-              this.setState({ showAllTags: true });
-            }}
-            className="label"
-            hidden={showAllTags}
-          >
-            {Constants.SHOW_MORE_TAGS}
-          </div>
+          <Tags clickHandler={this.handleSearch} />
         </div>
       </div>
     );
