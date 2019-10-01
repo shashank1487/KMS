@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { setColor, setBorder, customMedia } from "../../assets/js/styles";
+import { setColor, customMedia } from "../../assets/js/styles";
 
 const RegisterWrapper = component => {
   return styled(component)`

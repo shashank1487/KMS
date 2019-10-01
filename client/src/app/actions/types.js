@@ -6,7 +6,9 @@ const types = {
   RECEIVED_TAGS_FAILURE: null,
   ADD_TAG: null,
   SET_ALERT: null,
-  REMOVE_ALERT: null
+  REMOVE_ALERT: null,
+  REGISTER_SUCCESS: null,
+  REGISTER_FAILURE: null
 };
 
 export default mapValues(types, (value, key) => key);

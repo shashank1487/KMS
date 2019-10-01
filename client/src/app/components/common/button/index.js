@@ -25,11 +25,11 @@ export const PrimaryButton = styled(Button)`
 
 export const SecondaryButton = styled(Button)`
   background: ${setColor.lightGray};
-  border: ${setBorder({
+  /* border: ${setBorder({
     width: "1px",
     style: "solid",
     color: setColor.borderColor
-  })};
+  })}; */
 `;
 
 export const PrimaryButtonLarge = styled(Button)`

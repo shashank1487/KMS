@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { setRem } from "../../assets/js/styles";
-import showcase from "../../assets/images/artificial-intelligence-blur-close-up-546819.jpg";
+import showcase from "../../assets/images/kms-1.jpeg";
 
 const LandingWrapper = component => {
   return styled(component)`

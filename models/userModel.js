@@ -4,14 +4,9 @@ const validator = require("validator");
 const { SALT_ROUNDS } = require("../utils/constants");
 
 const userSchema = new mongoose.Schema({
-  firstName: {
+  fullName: {
     type: String,
-    required: [true, "Please provide your first name"]
-  },
-  lastName: { type: String, required: [true, "Please provide your last name"] },
-  designation: {
-    type: String,
-    required: [true, "Please provide your designation"]
+    required: [true, "Please provide your full name"]
   },
   email: {
     type: String,
@@ -36,9 +31,18 @@ const userSchema = new mongoose.Schema({
       message: "Password and confirmation password are not same"
     }
   },
+  avatar: {
+    type: String
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  passwordChangedAt: Date,
   role: {
     type: String,
-    required: [true, "Please provide a user role"]
+    enum: ["admin", "contributor", "approver"],
+    default: "contributor"
   }
 });
 
@@ -48,6 +52,24 @@ userSchema.pre("save", async function(next) {
   this.passwordConfirm = undefined;
   next();
 });
+
+userSchema.methods.comparePasswords = async function(
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+userSchema.methods.checkPasswordChanged = function(tokenIssuedTimestamp) {
+  if (this.passwordChangedAt) {
+    const passwordChangedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+    return tokenIssuedTimestamp < passwordChangedTimestamp;
+  }
+  return false;
+};
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;

@@ -12,6 +12,7 @@
     "no-param-reassign": "off",
     "no-return-await": "off",
     "no-underscore-dangle": "off",
+    "no-unsupported-features": "off",
     "class-methods-use-this": "off",
     "prefer-destructuring": [
       "error",

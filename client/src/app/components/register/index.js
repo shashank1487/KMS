@@ -1,4 +1,4 @@
-import React, { useState, useReducer, createRef } from "react";
+import React, { useState, createRef } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -15,8 +15,8 @@ import Form from "../common/validation/controls/form";
 import ValidationInput from "../common/validation/controls/input";
 import ValidationSelect from "../common/validation/controls/select";
 import ValidationButton from "../common/validation/controls/button";
-// import alertReducer from "../../reducers/alert";
-import * as actions from "../../actions/alert";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 import {
   required,
   isEmail,
@@ -24,28 +24,17 @@ import {
 } from "../common/validation/rules/register";
 import * as CONSTANTS from "../../utils/constants";
 
-const Register = ({ className }) => {
+const Register = ({ className, setAlert, register }) => {
   let formRef = createRef();
 
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    designation: "",
+    fullName: "",
     email: "",
     password: "",
     passwordConfirm: ""
   });
 
-  // const [state, dispatch] = useReducer(alertReducer, []);
-
-  const {
-    firstName,
-    lastName,
-    designation,
-    email,
-    password,
-    passwordConfirm
-  } = formData;
+  const { fullName, email, password, passwordConfirm } = formData;
 
   const changeHandler = e =>
     setFormData({
@@ -57,8 +46,7 @@ const Register = ({ className }) => {
     e.preventDefault();
     formRef.current.validateAll();
     if (!formRef.current.getChildContext()._errors.length) {
-      // TODO: Call api to register a user
-      console.log("api called");
+      register({ ...formData });
     }
   };
 
@@ -78,11 +66,11 @@ const Register = ({ className }) => {
                   </span>
                 </div>
                 <ValidationInput
-                  name="firstName"
+                  name="fullName"
                   className="form-control"
-                  placeholder="First name"
+                  placeholder="Full name"
                   type="text"
-                  value={firstName}
+                  value={fullName}
                   onChange={changeHandler}
                   validations={[required]}
                   errorMessage="First name is required"
@@ -125,7 +113,7 @@ const Register = ({ className }) => {
                   <option value="2">UX</option>
                   <option value="3s">DevOps</option>
                 </ValidationSelect>
-              </div> */}
+              </div>*/}
               <div className="form-group input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">
@@ -203,21 +191,12 @@ const Register = ({ className }) => {
 };
 
 Register.propTypes = {
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     setAlert: (msg, type) => {
-//       setAlertAction = actions.setAlert(msg, type);
-//       dispatch(setAlertAction);
-//     }
-//   };
-// };
-
-// export default connect(
-//   null,
-//   mapDispatchToProps
-// )(RegisterWrapper(Register));
-
-export default RegisterWrapper(Register);
+export default connect(
+  null,
+  { setAlert, register }
+)(RegisterWrapper(Register));

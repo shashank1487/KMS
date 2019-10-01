@@ -1,5 +1,6 @@
 class EnvironmentConfig {
   USER_TOKEN = "USER_TOKEN";
+  AUTHORIZATION_HEADER_KEY = "X-HLUser-Token";
   _currentUser = null;
 
   /**

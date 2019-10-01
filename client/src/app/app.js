@@ -16,7 +16,7 @@ const App = () => {
     <Provider store={store}>
       <div className="app">
         <Header />
-        {/* <Alert /> */}
+        <Alert />
         <Router />
       </div>
     </Provider>
