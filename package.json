@@ -22,7 +22,7 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-validation": "^3.0.7",
     "uuid": "^3.3.3",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
